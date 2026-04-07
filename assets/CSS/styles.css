@@ -15,7 +15,6 @@ body {
     animation: fondoMovimiento 15s ease infinite;
 }
 
-/* KEYFRAMES (Se mantienen igual) */
 @keyframes fondoMovimiento {
     0% { background-position: 0% 0%; }
     25% { background-position: 100% 0%; }
@@ -101,17 +100,34 @@ h2 {
 .caja {
     background: rgba(58, 10, 82, 0.7);
     backdrop-filter: blur(10px);
-    padding: 15px;
+    padding: 15px 5px; 
     border-radius: 20px;
-    min-width: 70px;
+    min-width: 80px; /* <--- ESTO evita que se amontone */
     border: 1px solid rgba(230, 184, 162, 0.4);
-    animation: aparecerBoton 0.5s ease-out;
-    animation: latido 2s ease-in-out infinite;
+    animation: aparecerBoton 0.5s ease-out, latido 2s ease-in-out infinite;
     animation-delay: 0.1s; 
     transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 .caja:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-.caja span { font-size: 2rem; font-weight: 800; color: #e6b8a2; }
+
+.caja span { 
+    font-size: 1.8rem;
+    font-weight: 800; 
+    color: #e6b8a2; 
+    line-height: 1;
+}
+
+.caja p {
+    font-size: 10px !important; 
+    margin: 5px 0 0 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+}
 .tarjeta {
     background: rgba(58, 10, 82, 0.6);
     backdrop-filter: blur(10px);

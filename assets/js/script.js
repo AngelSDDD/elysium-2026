@@ -79,3 +79,13 @@ setInterval(function() {
     console.log("%c¡ACCESO RESTRINGIDO!", "color: red; font-size: 30px; font-weight: bold; text-shadow: 2px 2px black;");
     console.log("%cEste código es propiedad privada de ELYSIUM. No intentes copiar.", "color: white; font-size: 14px;");
 }, 1000);
+
+document.oncontextmenu = function(){return false};
+
+document.onkeydown = function(e) {
+    if(e.keyCode == 123 || 
+       (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || 
+       (e.ctrlKey && e.keyCode == 85)) {
+        return false;
+    }
+};
