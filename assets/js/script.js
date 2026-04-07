@@ -1,5 +1,3 @@
-alert("✨ ¡Bienvenido a ELYSIUM 2026! ✨\n\nPrepárate para la mejor experiencia. No olvides confirmar tu asistencia.");
-
 document.addEventListener('DOMContentLoaded', function() {
     var numerosWA = {
         sanz: '5217715026581',
