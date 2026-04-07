@@ -196,8 +196,6 @@ h2 {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
-    /* CORRECCIÓN LÍNEA 198: Esta es la animación de ENTRADA por escala que ves en los contactos. 
-       Ahora se aplica a TODOS los botones en este grupo principal. */
     animation: aparecerBoton 0.6s ease-out; 
     transition: all 0.3s;
 }
