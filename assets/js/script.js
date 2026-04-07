@@ -48,3 +48,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+}, false);
+
+
+document.addEventListener('keydown', function(e) {
+    // Bloquear F12
+    if (e.key === 'F12') {
+        e.preventDefault();
+    }
+   
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+    }
+
+    if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+    }
+}, false);
+
+
+setInterval(function() {
+    console.clear();
+    console.log("%c¡ACCESO RESTRINGIDO!", "color: red; font-size: 30px; font-weight: bold; text-shadow: 2px 2px black;");
+    console.log("%cEste código es propiedad privada de ELYSIUM. No intentes copiar.", "color: white; font-size: 14px;");
+}, 1000);
