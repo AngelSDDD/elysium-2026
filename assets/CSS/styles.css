@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* --- RESET Y BASE --- */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +15,6 @@ body {
     animation: fondoMovimiento 15s ease infinite;
 }
 
-/* --- ANIMACIONES --- */
 @keyframes fondoMovimiento {
     0% { background-position: 0% 0%; }
     25% { background-position: 100% 0%; }
@@ -24,54 +22,55 @@ body {
     75% { background-position: 0% 100%; }
     100% { background-position: 0% 0%; }
 }
-
 @keyframes aparecer {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes flotar {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-8px); }
     100% { transform: translateY(0px); }
 }
-
-/* Animación de flotación suave para botones */
-@keyframes flotarSuave {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
-    100% { transform: translateY(0px); }
-}
-
 @keyframes brillar {
     0% { text-shadow: 0 0 0px #e6b8a2; }
     50% { text-shadow: 0 0 10px #e6b8a2; }
     100% { text-shadow: 0 0 0px #e6b8a2; }
 }
-
 @keyframes latido {
     0% { transform: scale(1); }
     50% { transform: scale(1.02); }
     100% { transform: scale(1); }
 }
-
 @keyframes aparecerTarjeta {
     from { opacity: 0; transform: translateX(-30px); }
     to { opacity: 1; transform: translateX(0); }
 }
-
+@keyframes brillarBorde {
+    0% { border-color: rgba(230, 184, 162, 0.2); }
+    50% { border-color: rgba(230, 184, 162, 0.5); }
+    100% { border-color: rgba(230, 184, 162, 0.2); }
+}
 @keyframes aparecerBoton {
     from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
 }
+@keyframes aparecerConsideraciones {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
 
-/* --- CONTENEDORES --- */
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     text-align: center;
     animation: aparecer 1s ease-out;
+}
+
+.container-inferior {
+    border: none;
+    margin-top: 0;
+    margin-bottom: 40px;
 }
 
 .logo-elysium {
@@ -82,7 +81,7 @@ body {
     animation: flotar 4s ease-in-out infinite;
     transition: transform 0.3s;
 }
-
+.logo-elysium:hover { transform: scale(1.02); }
 h2 {
     font-weight: 700;
     color: #e6b8a2;
@@ -90,7 +89,6 @@ h2 {
     letter-spacing: 2px;
     animation: brillar 3s ease-in-out infinite;
 }
-
 .fecha {
     font-size: 1.2rem;
     font-weight: 600;
@@ -98,50 +96,39 @@ h2 {
     margin-bottom: 20px;
     animation: latido 2s ease-in-out infinite;
 }
-
-/* --- RECONSTRUCCIÓN DEL CONTADOR (COMO EN IMAGE_27.PNG) --- */
-.contador {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Espaciado entre cajitas */
-    margin: 25px 0;
-    flex-wrap: wrap; /* Para móviles */
-}
-
+.contador { display: flex; justify-content: center; gap: 20px; margin: 20px 0; }
 .caja {
-    background: rgba(58, 10, 82, 0.7); /* Fondo morado semitransparente */
+    background: rgba(58, 10, 82, 0.7);
     backdrop-filter: blur(10px);
-    padding: 15px;
-    border-radius: 16px;
-    min-width: 90px;
-    border: 1px solid rgba(230, 184, 162, 0.4); /* Borde brillante suave */
+    padding: 15px 5px; 
+    border-radius: 20px;
+    min-width: 80px; 
+    border: 1px solid rgba(230, 184, 162, 0.4);
+    animation: aparecerBoton 0.5s ease-out, latido 2s ease-in-out infinite;
+    animation-delay: 0.1s; 
+    transition: all 0.3s;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    /* Mantenemos el latido suave en las cajitas */
-    animation: aparecerBoton 0.5s ease-out, latido 2s ease-in-out infinite;
 }
 
-.caja span {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #e6b8a2; /* Color melocotón */
+.caja:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+
+.caja span { 
+    font-size: 1.8rem;
+    font-weight: 800; 
+    color: #e6b8a2; 
     line-height: 1;
 }
 
 .caja p {
-    font-size: 11px;
-    margin-top: 5px;
+    font-size: 10px !important; 
+    margin: 5px 0 0 0;
     text-transform: uppercase;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 1px;
+    white-space: nowrap;
 }
-
-/* --- TARJETAS --- */
-.tarjeta, .tarjeta-horario {
+.tarjeta {
     background: rgba(58, 10, 82, 0.6);
     backdrop-filter: blur(10px);
     padding: 25px;
@@ -149,9 +136,53 @@ h2 {
     margin: 10px 0;
     border: 1px solid rgba(230, 184, 162, 0.3);
     animation: aparecerTarjeta 0.8s ease-out;
+    transition: all 0.3s;
 }
+.tarjeta:hover { transform: scale(1.01); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+.tarjeta-horario {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(230, 184, 162, 0.2);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin: 20px auto;
+    max-width: 450px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    animation: aparecerTarjeta 0.8s ease-out, brillarBorde 3s ease-in-out infinite;
+    transition: all 0.3s;
+}
+.tarjeta-horario:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); }
+.brillo-decorativo {
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(230, 184, 162, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    animation: fondoMovimiento 6s linear infinite;
+}
+.linea-separadora { height: 1px; width: 40%; background: linear-gradient(to right, transparent, #e6b8a2, transparent); margin: 15px auto; }
+.texto-principal { font-size: 1.2rem; font-weight: 600; color: #fff; margin: 0; }
+.texto-secundario { font-size: 1rem; font-weight: 400; color: #e6b8a2; margin: 0; }
+.videos-ubicacion { display: flex; flex-direction: column; gap: 20px; margin: 20px 0; }
+.video-card {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 24px;
+    padding: 20px;
+    border: 1px solid rgba(230, 184, 162, 0.3);
+    animation: aparecerTarjeta 0.8s ease-out;
+    animation-delay: 0.2s;
+    transition: all 0.3s;
+}
+.video-card:hover { transform: scale(1.01); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+.video-titulo { color: #e6b8a2; margin-bottom: 15px; font-weight: 700; letter-spacing: 1px; }
+.video-lugar { width: 100%; max-width: 500px; border-radius: 16px; }
 
-/* --- BOTONES (UNIFICADOS CON FLOTACIÓN) --- */
+/* --- SECCIÓN CORREGIDA PARA LA ANIMACIÓN DE ENTRADA --- */
 .btn-wa, .btn-group-wa, .btn-confirmar, .btn-ig {
     display: block; 
     width: 90%; 
@@ -165,78 +196,98 @@ h2 {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+    /* CORRECCIÓN LÍNEA 198: Esta es la animación de ENTRADA por escala que ves en los contactos. 
+       Ahora se aplica a TODOS los botones en este grupo principal. */
+    animation: aparecerBoton 0.6s ease-out; 
     transition: all 0.3s;
-    /* Todos entran escalando */
-    animation: aparecerBoton 0.6s ease-out forwards;
 }
+/* -------------------------------------------------------- */
 
-/* WhatsApp y Grupo de Comunidad: Tienen el movimiento de latido infinito y flotación */
-.btn-wa, .btn-group-wa { 
-    background: #25D366; 
-    color: black; 
-    /* Combinamos entrada, latido infinito y flotación suave */
-    animation: aparecerBoton 0.6s ease-out, 
-               latido 2s ease-in-out infinite, 
-               flotarSuave 3s ease-in-out infinite !important; 
-}
-
-.btn-wa:hover, .btn-group-wa:hover { 
-    transform: scale(1.05); 
-    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); 
-}
-
-.btn-confirmar { 
-    background: #e6b8a2; 
-    color: black; 
-    /* Agregada flotación suave también aquí */
-    animation: aparecerBoton 0.6s ease-out, flotarSuave 3.5s ease-in-out infinite;
-}
-
+.btn-wa, .btn-group-wa { background: #25D366; color: black; animation: brillar 4s ease-in-out infinite; }
+.btn-wa:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.4); }
+.btn-confirmar { background: #e6b8a2; color: black; }
+.btn-confirmar:hover { transform: scale(1.05) translateY(-3px); box-shadow: 0 10px 20px rgba(230, 184, 162, 0.4); }
 .btn-ig { 
-    background: linear-gradient(45deg, #f09433, #d62976, #962fbf); 
-    color: white; 
-    display: inline-block; 
-    width: auto; 
-    margin: 5px; 
-    padding: 10px 20px;
-    /* Agregada flotación suave también aquí */
-    animation: aparecerBoton 0.6s ease-out, flotarSuave 4s ease-in-out infinite;
+    background: linear-gradient(45deg, #f09433, #d62976, #962fbf); color: white; display: inline-block; 
+    width: auto; margin: 5px; animation: aparecerBoton 0.6s ease-out; transition: all 0.3s;
 }
+.btn-ig:hover { transform: scale(1.1) rotate(3deg); box-shadow: 0 10px 20px rgba(214, 41, 118, 0.4); }
+.consideraciones {
+    background: rgba(0, 0, 0, 0.5); border-left: 4px solid #e6b8a2; padding: 18px;
+    margin: 20px auto; max-width: 350px; text-align: left; border-radius: 16px;
+    animation: aparecerConsideraciones 0.8s ease-out; transition: all 0.3s;
+}
+.consideraciones:hover { transform: scale(1.02); border-left: 4px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid rgba(230, 184, 162, 0.2); font-size: 0.8rem; color: #aaa; animation: brillar 4s ease-in-out infinite; }
 
-/* --- SECCIÓN DJ --- */
 .dj-contenedor-central {
-    display: block;
-    margin: 40px auto;
-    max-width: 400px;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 60px;    
+  margin-bottom: 60px; 
+  padding: 0 20px;     
+  box-sizing: border-box;
 }
 
 .dj-tarjeta-animada {
-    background: rgba(45, 12, 63, 0.4);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(123, 31, 162, 0.3);
-    animation: aparecer 1s ease-out forwards;
+  text-align: center;
+  background: rgba(45, 12, 63, 0.4);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(123, 31, 162, 0.3);
+  
+  opacity: 0; 
+  transform: translateY(30px); 
+  animation: fadeInSlideUp 1s ease-out forwards; 
+  animation-delay: 0.5s; 
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); 
+  }
 }
 
 .dj-titulo-neon {
-    color: #ffab91;
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px rgba(255, 171, 145, 0.7);
+  color: #ffab91; 
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(255, 171, 145, 0.7); 
 }
 
 .dj-imagen-neon {
-    max-width: 90%;
-    height: auto;
-    border-radius: 15px;
-    border: 2px solid #ffab91;
-    box-shadow: 0 0 20px rgba(123, 31, 162, 0.8);
+  max-width: 90%;
+  height: auto;
+  border-radius: 15px;
+  border: 2px solid #ffab91; 
+  
+  box-shadow: 
+    0 0 20px rgba(123, 31, 162, 0.8),
+    0 0 40px rgba(123, 31, 162, 0.6);
+  
+  margin-bottom: 15px;
 }
 
-footer {
-    margin-top: 30px;
-    padding: 15px;
-    font-size: 0.8rem;
-    color: #aaa;
+.dj-descripcion {
+  color: white;
+  font-family: sans-serif;
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-top: 10px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.dj-contenedor-central {
+    display: block !important; 
+    clear: both;
+    margin: 40px auto;
+    max-width: 400px; 
 }
